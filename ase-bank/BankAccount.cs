@@ -35,7 +35,15 @@ namespace ase_bank
         * */
         public void Debit(double amount)
         {
-            throw new NotImplementedException();
+            if (m_frozen == true)
+            {
+                throw new System.InvalidOperationException();
+            }
+            if (amount < 0)
+            {
+                throw new System.ArgumentOutOfRangeException("amount");
+            }
+            m_balance -= amount;
         }
 
         /**
@@ -43,7 +51,16 @@ namespace ase_bank
          * */
         public void Credit(double amount)
         {
-            throw new NotImplementedException();
+            if (m_frozen == true)
+            {
+                throw new System.InvalidOperationException();
+            }
+            if (amount < 0)
+            {
+                throw new System.ArgumentOutOfRangeException("amount");
+            }
+                m_balance += amount;
+            
         }
 
         public void FreezeAccount()
